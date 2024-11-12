@@ -1,0 +1,210 @@
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --background: #f8fafc;
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Reset moderno */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  /* Header moderno con glassmorphism */
+  header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  }
+  
+  header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: slideIn 0.5s ease-out forwards;
+  }
+  
+  /* Navigazione moderna */
+  nav {
+    padding: 1rem 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  nav ul li a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: var(--transition);
+    position: relative;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--primary);
+    transition: var(--transition);
+    transform: translateX(-50%);
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  /* Hero section moderno */
+  #hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://th.bing.com/th/id/OIP.Xoaf9IWRA5ZZWglo90cIpAHaEK?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.7);
+    z-index: -1;
+  }
+  
+  #hero h2 {
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Sezioni moderne */
+  section {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Cards moderne con hover effect */
+  .skills-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  }
+  
+  .card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+  }
+  
+  /* Footer moderno */
+  footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  
+  /* Animazioni moderne */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Media queries per responsività */
+  @media (max-width: 768px) {
+    nav ul {
+      gap: 1rem;
+    }
+    
+    .skills-cards {
+      grid-template-columns: 1fr;
+    }
+  }
